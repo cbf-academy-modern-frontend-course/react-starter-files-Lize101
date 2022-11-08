@@ -3,10 +3,9 @@ import ReactDOM from 'react-dom/client';
 import Profile from './Profile';
 
 function App() {
-  return (
-      //Replace the string below with the JSX Profile component
-      "Return the JSX Profile function as a JSX element here"
-  );
+ return (<div>
+  <Profile name="Liz" bio="My bio"/>
+ </div>)
 }
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
