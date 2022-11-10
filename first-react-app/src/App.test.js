@@ -15,3 +15,10 @@ test('renders without crashing', () => {
  root.render(<App />);
  });
 });
+
+test('renders h2 text', () => {
+  render(<App />);
+  const h2 = screen.getByText(/This is my first React page… I enjoy learning!+/i);
+  expect(h2).toBeInTheDocument();
+})
+
