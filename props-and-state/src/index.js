@@ -1,5 +1,6 @@
 import React, { useState, Fragment } from 'react';
 import ReactDOM from 'react-dom/client';
+import './index.css';
 //import data from './models/headphones.json';
 
 import GadgetList from './components/GadgetList';
