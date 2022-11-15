@@ -20,10 +20,15 @@ const Book = ({ book }) => {
         <p>£{book.saleInfo.retailPrice && book.saleInfo.retailPrice.amount}</p>
       ) : (
         <p>No price found</p>
-      )} 
+      )}
+      <button onClick={addBook}>Add +</button>
     </div>
   );
 };
+
+const addBook = (title) => {
+  console.log(`A button was clicked`);
+}
 
 Book.propTypes = {
   volumeInfo: PropTypes.shape({
