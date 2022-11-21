@@ -11,24 +11,27 @@ import React from "react";
 import PropTypes from 'prop-types';
 
 const Book = ({ book }) => {
+  const addBook = () => {
+    console.log(`The book "${book.volumeInfo.title}" was clicked`);
+  }
+  
   return (
     <div>
       <h2>{book.volumeInfo.title}</h2>
       <h3>{book.volumeInfo.authors.length > 1 ? book.volumeInfo.authors.join(" and ") : book.volumeInfo.authors}</h3>
-      <img src={book.volumeInfo.imageLinks.thumbnail} alt="Thumb"/>
-      {book ? (
+      <img src={book.volumeInfo.imageLinks.thumbnail} alt={book.volumeInfo.title}/>
+      {book.saleInfo.retailPrice ? (
         <p>£{book.saleInfo.retailPrice && book.saleInfo.retailPrice.amount}</p>
       ) : (
         <p>No price found</p>
       )}
+      <p>{book.volumeInfo.description.substring(0, 200)}...</p>
       <button onClick={addBook}>Add +</button>
     </div>
   );
 };
 
-const addBook = (title) => {
-  console.log(`A button was clicked`);
-}
+
 
 Book.propTypes = {
   volumeInfo: PropTypes.shape({
