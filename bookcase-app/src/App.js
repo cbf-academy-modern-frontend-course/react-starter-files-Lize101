@@ -13,18 +13,40 @@ import React from "react";
 import Book from "./components/Book";
 import data from "./models/books.json";
 import { useState } from "react";
-// import Search from "./components/Search";
-// import {BrowserRouter as Router, Route} from "react-router-dom";
+import Header from "./components/Header";
+import Search from "./components/Search";
+import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import BookList from "./components/BookList";
 
 function App() {
   const [books] = useState(data);
   // const books = data;
+
+  <Router>
+    <Routes>
+      <Route exact path="/" element={<Header />}/>
+      <Route exact path="/bookcase" element={<Header />} />
+    </Routes>
+  </Router>
+
+  const appStyle = {
+    "fontFamily":"Arial",
+    "width":"700px",
+    "margin":"auto",
+    "fontSize": "1.5em"
+    // "display": "flex",
+    // "alignItems": "center",
+    // "justifyContent": "center",
+    // "height": "100vw"
+  }
+
   return (
-    <>
-    <h2>Liz's Bookcase App</h2>
-    {/* <Search/> */}
-    {books.map((book) => <Book key={book.id} book={book}/>)}
-  </>
+    <div style={appStyle}>
+      <Header />
+      <Search/>
+      {books.map((book) => <Book key={book.id} book={book} style={{"margin":"50px"}}/>)}
+      {/* <BookList /> */}
+  </div>
   )
 }
 
