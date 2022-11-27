@@ -18,6 +18,7 @@ import Search from "./components/Search";
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import BookList from "./components/BookList";
 import About from "./pages/About";
+import Error from "./pages/ErrorPage";
 
 function App() {
   const [books] = useState(data);
@@ -42,6 +43,7 @@ function App() {
       <Route exact path="/" element={<Header />}/>
       <Route exact path="/bookcase" element={<Header />} />
       <Route exact path="/about" element={<About />} />
+      <Route exact path="*" element={<Error />} />
     </Routes>
   </Router>
   )
