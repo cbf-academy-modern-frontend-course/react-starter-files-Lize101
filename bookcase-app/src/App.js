@@ -24,8 +24,6 @@ function App() {
   const [books] = useState(data);
   // const books = data;
 
- 
-
   const appStyle = {
     "fontFamily":"Arial",
     "width":"700px",
@@ -40,8 +38,21 @@ function App() {
   return (
     <Router>
     <Routes>
-      <Route exact path="/" element={<Header />}/>
-      <Route exact path="/bookcase" element={<Header />} />
+      <Route exact path="/" element={
+        <div style={appStyle}>
+          <Header />
+          <Search/>
+          {books.map((book) => <Book key={book.id} book={book} style={{"margin":"50px"}}/>)}
+        </div>
+    }/>
+      <Route exact path="/bookcase" element={
+        <div style={appStyle}>
+          <Header />
+          <Search/>
+          {books.map((book) => <Book key={book.id} book={book} style={{"margin":"50px"}}/>)}
+        </div>
+      
+    } />
       <Route exact path="/about" element={<About />} />
       <Route exact path="*" element={<Error />} />
     </Routes>
