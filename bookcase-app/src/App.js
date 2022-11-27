@@ -17,17 +17,13 @@ import Header from "./components/Header";
 import Search from "./components/Search";
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import BookList from "./components/BookList";
+import About from "./pages/About";
 
 function App() {
   const [books] = useState(data);
   // const books = data;
 
-  <Router>
-    <Routes>
-      <Route exact path="/" element={<Header />}/>
-      <Route exact path="/bookcase" element={<Header />} />
-    </Routes>
-  </Router>
+ 
 
   const appStyle = {
     "fontFamily":"Arial",
@@ -41,13 +37,23 @@ function App() {
   }
 
   return (
-    <div style={appStyle}>
-      <Header />
-      <Search/>
-      {books.map((book) => <Book key={book.id} book={book} style={{"margin":"50px"}}/>)}
-      {/* <BookList /> */}
-  </div>
+    <Router>
+    <Routes>
+      <Route exact path="/" element={<Header />}/>
+      <Route exact path="/bookcase" element={<Header />} />
+      <Route exact path="/about" element={<About />} />
+    </Routes>
+  </Router>
   )
+
+  // return (
+  //   <div style={appStyle}>
+  //     <Header />
+  //     <Search/>
+  //     {books.map((book) => <Book key={book.id} book={book} style={{"margin":"50px"}}/>)}
+  //     {/* <BookList /> */}
+  // </div>
+  // )
 }
 
 export default App;
