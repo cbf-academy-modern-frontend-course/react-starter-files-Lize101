@@ -19,7 +19,8 @@ const Header = () => {
             <h1>Liz's Bookcase App</h1>
             <div>
                 <Link to="/" style={linkStyle}>Home |</Link>
-                <Link to="/bookcase" style={linkStyle}>Bookcase</Link>
+                <Link to="/bookcase" style={linkStyle}>Bookcase |</Link>
+                <Link to="/about" style={linkStyle}>About</Link>
             </div>
         </div>
     )
