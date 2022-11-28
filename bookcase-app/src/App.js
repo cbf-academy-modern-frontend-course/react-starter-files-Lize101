@@ -18,12 +18,11 @@ import Search from "./components/Search";
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import BookList from "./components/BookList";
 import About from "./pages/About";
+import Error from "./pages/ErrorPage";
 
 function App() {
   const [books] = useState(data);
   // const books = data;
-
- 
 
   const appStyle = {
     "fontFamily":"Arial",
@@ -39,12 +38,38 @@ function App() {
   return (
     <Router>
     <Routes>
-      <Route exact path="/" element={<Header />}/>
-      <Route exact path="/bookcase" element={<Header />} />
-      <Route exact path="/about" element={<About />} />
+      <Route exact path="/" element={
+        <div style={appStyle}>
+          <Header />
+          <Search/>
+          {books.map((book) => <Book key={book.id} book={book} style={{"margin":"50px"}}/>)}
+        </div>
+    }/>
+      <Route exact path="/bookcase" element={
+        <div style={appStyle}>
+          <Header />
+          <Search/>
+          {books.map((book) => <Book key={book.id} book={book} style={{"margin":"50px"}}/>)}
+        </div>
+      
+    } />
+      <Route exact path="/about" element={
+      <>
+        <Header />
+        <About />
+        {/* <BookList /> */}
+      </>
+      } />
+      <Route exact path="*" element={<Error />} />
     </Routes>
   </Router>
   )
+
+// const findBooks = async (value) => {
+//   const url =
+//   `https://www.googleapis.com/books/v1/volumes?q=${value}&filter=paid-ebooks&pr
+//   int-type=books&projection=lite`;
+// }
 
   // return (
   //   <div style={appStyle}>
