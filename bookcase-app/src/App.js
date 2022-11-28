@@ -53,11 +53,23 @@ function App() {
         </div>
       
     } />
-      <Route exact path="/about" element={<About />} />
+      <Route exact path="/about" element={
+      <>
+        <Header />
+        <About />
+        {/* <BookList /> */}
+      </>
+      } />
       <Route exact path="*" element={<Error />} />
     </Routes>
   </Router>
   )
+
+// const findBooks = async (value) => {
+//   const url =
+//   `https://www.googleapis.com/books/v1/volumes?q=${value}&filter=paid-ebooks&pr
+//   int-type=books&projection=lite`;
+// }
 
   // return (
   //   <div style={appStyle}>

@@ -5,9 +5,9 @@ import { Link } from 'react-router-dom';
 const About = () => {
     return (
         <>
-            <div>
+            {/* <div>
                 <Link to="/">Home</Link>
-            </div>        
+            </div>         */}
             <h2 className='red'>About</h2>
             <p>A website about books. Click the add button to add a book to your list.</p>
         </>
