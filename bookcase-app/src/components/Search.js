@@ -28,12 +28,17 @@ const Search = (props) => {
 
     const [keyword, setKeyword] = useState('');
 
+    const searchedWord = `Keyword typed: ${keyword}`;
     return (
         <div>
             <form>
-                <input type="text" value={keyword} onChange={changeHandler} placeholder=" Enter name, author, keyword or genre..." style={formTextStyle}/>
+                <input type="text" 
+                    value={keyword} 
+                    onChange={changeHandler} 
+                    placeholder=" Enter name, author, keyword or genre..." 
+                    style={formTextStyle}/>
                 <button type="submit" style={formButtonStyle}>Find</button>
-                <p>{keyword && 'Keyword typed:' + {keyword}}</p>
+                {keyword && searchedWord}
             </form>
         </div>
     )
