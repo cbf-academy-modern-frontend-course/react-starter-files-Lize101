@@ -22,8 +22,13 @@ const Search = (props) => {
 
     const changeHandler = (e) => {
         e.preventDefault()
-        setKeyword(e.target.value)
+        props.setKeyword(e.target.value)
         console.log(e.target.value)
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        props.findBooks(props.keyword)
     }
 
     const [keyword, setKeyword] = useState('');
@@ -31,9 +36,9 @@ const Search = (props) => {
     const searchedWord = `Keyword typed: ${keyword}`;
     return (
         <div>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <input type="text" 
-                    value={keyword} 
+                    value={props.keyword} 
                     onChange={changeHandler} 
                     placeholder=" Enter name, author, keyword or genre..." 
                     style={formTextStyle}/>

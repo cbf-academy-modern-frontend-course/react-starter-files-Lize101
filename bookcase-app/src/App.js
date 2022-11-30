@@ -29,11 +29,18 @@ function App() {
     "width":"700px",
     "margin":"auto",
     "fontSize": "1.5em"
-    // "display": "flex",
-    // "alignItems": "center",
-    // "justifyContent": "center",
-    // "height": "100vw"
   }
+
+  const findBooks = async (value) => {
+    const url =
+    `https://www.googleapis.com/books/v1/volumes?q=${value}&filter=paid-ebooks&print-type=books&projection=lite`;
+  
+    const results = await fetch(url).then(res => res.json());
+  
+    if(!results.error) {
+      setBooks(results.items);
+    }
+  }  
 
   return (
     <Router>
@@ -41,7 +48,7 @@ function App() {
       <Route exact path="/" element={
         <div style={appStyle}>
           <Header />
-          <Search/>
+          <Search findBooks={findBooks} keyword={keyword} setKeyword={setKeyword}/>
           {books.map((book) => <Book key={book.id} book={book} style={{"margin":"50px"}}/>)}
         </div>
     }/>
@@ -65,11 +72,9 @@ function App() {
   </Router>
   )
 
-// const findBooks = async (value) => {
-//   const url =
-//   `https://www.googleapis.com/books/v1/volumes?q=${value}&filter=paid-ebooks&pr
-//   int-type=books&projection=lite`;
-// }
+
+
+
 
   // return (
   //   <div style={appStyle}>
